@@ -11,3 +11,4 @@ export * from './core/types/options.type';
 
 export * from './core/utils/apply-mixins';
 export * from './core/utils/track-by-value';
+export * from './core/utils/field-providers';
