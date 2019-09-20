@@ -23,10 +23,10 @@ export class FieldComponentBase implements OnInit, OnDestroy {
   @Input() grid = 'col-md-12';
 
   /** El FormControl vinculado al componente */
-  protected control: FormControl;
+  control: FormControl;
 
   /** Almacena todas las suscripciones del componente */
-  protected subscriptions: Subscription[] = [];
+  subscriptions: Subscription[] = [];
 
   @HostBinding('class')
   get hostClasses(): string {
