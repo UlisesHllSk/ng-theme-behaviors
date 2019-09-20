@@ -10,5 +10,5 @@ export * from './core/directives/digits-only/digits-only.module';
 export * from './core/types/options.type';
 
 export * from './core/utils/apply-mixins';
-export * from './core/utils/track-by-value';
+export * from './core/utils/track-by';
 export * from './core/utils/field-providers';

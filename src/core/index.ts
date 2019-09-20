@@ -8,4 +8,4 @@ export * from './directives/digits-only/digits-only.module';
 export * from './types/options.type';
 
 export * from './utils/apply-mixins';
-export * from './utils/track-by-value';
+export * from './utils/track-by';
