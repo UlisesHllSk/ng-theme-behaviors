@@ -1,12 +1,13 @@
-import { Input, Output, EventEmitter, OnInit, OnDestroy, ChangeDetectorRef, Optional, Inject } from '@angular/core';
+import { Input, Output, EventEmitter, OnInit, OnDestroy, ChangeDetectorRef, Optional, Inject, Component } from '@angular/core';
 import { FormControl, ValidatorFn, AsyncValidatorFn, ControlValueAccessor, Validator, ValidationErrors } from '@angular/forms';
 
-import { FieldComponentBase, FIELD_METADATA } from './field-component.base';
+import { FieldBaseComponent, FIELD_METADATA } from './field-component.base';
 
 /**
  * Clase Base para implementar todos los inputs de los formularios
  */
-export abstract class FormControlComponentBase extends FieldComponentBase implements OnDestroy, OnInit, ControlValueAccessor, Validator {
+@Component({ template: ''})
+export class FormControlBaseComponent extends FieldBaseComponent implements OnDestroy, OnInit, ControlValueAccessor, Validator {
   /** Parametro que indica el label del input */
   @Input() label: string;
 
@@ -52,13 +53,6 @@ export abstract class FormControlComponentBase extends FieldComponentBase implem
   onChange = (_: any) => { };
 
   onTouch = () => { };
-
-  constructor(
-    protected changeDetectorRef: ChangeDetectorRef,
-    @Optional() @Inject(FIELD_METADATA) protected metadata: any
-  ) {
-    super(changeDetectorRef, metadata);
-  }
 
   ngOnInit() {
     super.ngOnInit();

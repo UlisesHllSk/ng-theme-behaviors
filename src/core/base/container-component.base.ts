@@ -8,16 +8,18 @@ import {
   Inject,
   Injector,
   ContentChildren,
-  QueryList
+  QueryList,
+  Component
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { FIELD_METADATA, FieldComponentBase } from './field-component.base';
+import { FIELD_METADATA, FieldBaseComponent } from './field-component.base';
 
 export const CONTAINER_METADATA = new InjectionToken<{ element: any }>(
   'CONTAINER_METADATA'
 );
 
-export class ContainerComponentBase {
+@Component({template: ''})
+export class FormContainerBaseComponent {
   @Input()
   subtitle = '';
 
@@ -27,8 +29,8 @@ export class ContainerComponentBase {
   @Input()
   visible = new BehaviorSubject<boolean>(true);
 
-  @ContentChildren(FieldComponentBase)
-  childrenFields: QueryList<FieldComponentBase>;
+  @ContentChildren(FieldBaseComponent)
+  childrenFields: QueryList<FieldBaseComponent>;
 
   @ViewChild('fieldsDynamicContainer', { read: ViewContainerRef, static: true })
   fieldsDynamicContainer: ViewContainerRef;

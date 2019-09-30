@@ -6,7 +6,8 @@ import {
   InjectionToken,
   Inject,
   Optional,
-  OnInit
+  OnInit,
+  Component
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -15,7 +16,8 @@ export const FIELD_METADATA = new InjectionToken<{ element: any }>(
   'FIELD_METADATA'
 );
 
-export class FieldComponentBase implements OnInit, OnDestroy {
+@Component({ template: ''})
+export class FieldBaseComponent implements OnInit, OnDestroy {
   /** Evento para hacer visible o esconder el componente */
   @Input() visible = new BehaviorSubject<boolean>(true);
 
@@ -55,7 +57,7 @@ export class FieldComponentBase implements OnInit, OnDestroy {
    * Asigna los valores de un json al componenete
    * @param  metadata object con la informacion inicial
    */
-  public fromJson(metadata: any): FieldComponentBase {
+  public fromJson(metadata: any): FieldBaseComponent {
     // tslint:disable-next-line: forin
     for (const propName in metadata) {
       (this as any)[propName] = metadata[propName];
