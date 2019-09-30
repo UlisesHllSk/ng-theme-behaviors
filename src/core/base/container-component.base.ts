@@ -18,7 +18,7 @@ export const CONTAINER_METADATA = new InjectionToken<{ element: any }>(
   'CONTAINER_METADATA'
 );
 
-@Component({template: ''})
+@Component({ template: '' })
 export class FormContainerBaseComponent {
   @Input()
   subtitle = '';
@@ -37,6 +37,8 @@ export class FormContainerBaseComponent {
 
   currentComponent: any;
 
+  protected formComponents: any;
+
   get classes() {
     return [
       'row',
@@ -45,7 +47,6 @@ export class FormContainerBaseComponent {
 
   constructor(
     protected resolver: ComponentFactoryResolver,
-    protected formComponents: any,
     @Optional() @Inject(CONTAINER_METADATA) protected metadata: any
   ) {
     if (this.metadata) {

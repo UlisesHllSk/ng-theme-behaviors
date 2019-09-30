@@ -1,11 +1,11 @@
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
 import { forwardRef } from '@angular/core';
 
-import { FieldComponentBase } from '../base/field-component.base';
+import { FieldBaseComponent } from '../base/field-component.base';
 
 /**
  * Genera los provider para NG_VALUE_ACCESSOR,
- * NG_VALIDATORS y FieldComponentBase
+ * NG_VALIDATORS y FieldBaseComponent
  * @param componentType Componente al que se le
  * aplicarán los providers
  */
@@ -35,7 +35,7 @@ export function validatorsProvider(componentType: any) {
 
 export function fieldComponentBaseProvider(componentType: any) {
   return {
-    provide: FieldComponentBase,
+    provide: FieldBaseComponent,
     useExisting: forwardRef(() => componentType),
     multi: true
   };
