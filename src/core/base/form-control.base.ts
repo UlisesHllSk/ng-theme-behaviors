@@ -1,7 +1,7 @@
 import { Input, Output, EventEmitter, OnInit, OnDestroy, Component } from '@angular/core';
 import { FormControl, ValidatorFn, AsyncValidatorFn, ControlValueAccessor, Validator, ValidationErrors } from '@angular/forms';
 
-import { FieldBaseComponent, FIELD_METADATA } from './field-component.base';
+import { FieldBaseComponent } from './field-component.base';
 
 /**
  * Clase Base para implementar todos los inputs de los formularios
