@@ -1,4 +1,4 @@
-import { Input, Output, EventEmitter, OnInit, OnDestroy, Component } from '@angular/core';
+import { Input, Output, EventEmitter, OnInit, Component } from '@angular/core';
 import { FormControl, ValidatorFn, AsyncValidatorFn, ControlValueAccessor, Validator, ValidationErrors } from '@angular/forms';
 
 import { FieldBaseComponent } from './field-component.base';
@@ -7,7 +7,7 @@ import { FieldBaseComponent } from './field-component.base';
  * Clase Base para implementar todos los inputs de los formularios
  */
 @Component({ template: ''})
-export class FormControlBaseComponent extends FieldBaseComponent implements OnDestroy, OnInit, ControlValueAccessor, Validator {
+export class FormControlBaseComponent extends FieldBaseComponent implements OnInit, ControlValueAccessor, Validator {
   /** Parametro que indica el label del input */
   @Input() label: string;
 
