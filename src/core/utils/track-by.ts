@@ -8,7 +8,7 @@ export class TrackBy {
    * dentro de la colección
    * @param item Valor del objeto que se esta iterando
    */
-  static trackByValue = (index: number, item: FormOptions) => {
+  trackByValue(index: number, item: FormOptions) {
     if (!item) {
       return null;
     }
