@@ -48,7 +48,7 @@ export class FormControlBaseComponent extends FieldBaseComponent implements OnIn
   value = null;
 
   /** Indicador que determina si el campo esta deshabilitado */
-  isDisabled: boolean;
+  isDisabled = false;
 
   onChange = (_: any) => { };
 
