@@ -1,17 +1,12 @@
-import {
-  Input,
-  ChangeDetectorRef,
-  Optional,
-  Inject
-} from '@angular/core';
+import { Input, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FormControlComponentBase } from './form-control.base';
-import { FIELD_METADATA } from './field-component.base';
+import { FormControlBaseComponent } from './form-control.base';
 
 /**
  * Clase que sirve para base de los inputs genericos que no son radios ni checksbox.
  */
-export class InputComponentBase extends FormControlComponentBase {
+@Component({ template: '' })
+export class InputBaseComponent extends FormControlBaseComponent {
   /** Prefijo del campo */
   @Input() prefix: string;
 
@@ -33,18 +28,8 @@ export class InputComponentBase extends FormControlComponentBase {
   /** Copia del valor del campo */
   protected backupValue = '';
 
-  constructor(
-    protected changeDetectorRef: ChangeDetectorRef,
-    @Optional() @Inject(FIELD_METADATA) protected metadata: any
-  ) {
-    super(changeDetectorRef, metadata);
-  }
-
   validateMax = (control: FormControl) => {
-    if (
-      control.value &&
-      control.value.toString().length > this.max
-    ) {
+    if (control.value && control.value.toString().length > this.max) {
       this.control.setValue(
         control.value
           .toString()
