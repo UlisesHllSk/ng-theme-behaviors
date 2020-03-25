@@ -1,7 +1,7 @@
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
 import { forwardRef } from '@angular/core';
+import { FormControlBaseComponent } from '../form-field/form-field.base';
 
-import { FieldBaseComponent } from '../base/field-component.base';
 
 /**
  * Genera los provider para NG_VALUE_ACCESSOR,
@@ -35,7 +35,7 @@ export function validatorsProvider(componentType: any) {
 
 export function fieldComponentBaseProvider(componentType: any) {
   return {
-    provide: FieldBaseComponent,
+    provide: FormControlBaseComponent,
     useExisting: forwardRef(() => componentType),
     multi: true
   };

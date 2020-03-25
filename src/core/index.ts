@@ -1,7 +1,5 @@
-export * from './base/field-component.base';
-export * from './base/form-control.base';
+export * from './form-field/form-field.base';
 export * from './base/input-component.base';
-export * from './base/container-component.base';
 
 export * from './directives/digits-only/digits-only.module';
 

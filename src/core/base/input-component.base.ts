@@ -1,6 +1,7 @@
 import { Input, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FormControlBaseComponent } from './form-control.base';
+import { FormControlBaseComponent } from '../form-field/form-field.base';
+
 
 /**
  * Clase que sirve para base de los inputs genericos que no son radios ni checksbox.
@@ -30,13 +31,13 @@ export class InputBaseComponent extends FormControlBaseComponent {
 
   validateMax = (control: FormControl) => {
     if (control.value && control.value.toString().length > this.max) {
-      this.control.setValue(
+      /** this.control.setValue(
         control.value
           .toString()
           .trim()
           .slice(0, this.max),
         { emitEvent: false }
-      );
+      ); */
     }
     return null;
   };

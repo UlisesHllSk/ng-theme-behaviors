@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { FieldBaseComponent } from './base/field-component.base';
-import { FormControlBaseComponent } from './base/form-control.base';
+import { FormControlBaseComponent } from './form-field/form-field.base';
 import { InputBaseComponent } from './base/input-component.base';
 import { FormContainerBaseComponent } from './base/container-component.base';
 

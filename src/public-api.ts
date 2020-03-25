@@ -1,7 +1,7 @@
 // export * from './core';
 
 export * from './core/base/field-component.base';
-export * from './core/base/form-control.base';
+export * from './core/form-field/form-field.base';
 export * from './core/base/input-component.base';
 export * from './core/base/container-component.base';
 
