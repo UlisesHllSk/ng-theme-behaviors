@@ -12,7 +12,7 @@ import { FormControlBaseComponent } from '../form-field/form-field.base';
 export function fieldsProviders(componentType: any) {
   return [
     valueAccesorProvider(componentType),
-    validatorsProvider(componentType),
+    // validatorsProvider(componentType),
     fieldComponentBaseProvider(componentType),
   ];
 }

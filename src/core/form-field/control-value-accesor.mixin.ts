@@ -3,14 +3,19 @@ import { ControlValueAccessor } from '@angular/forms';
 import { Constructor } from '../constructor';
 import { IsFormField } from './is-form-field';
 
+export interface HasControlValueAccessor extends ControlValueAccessor {
+  onChange: (_: any) => any;
+  onTouched: () => any;
+  onInput: (value: any) => any;
+}
 
 /** Mixin to augment a component with Dynamic Forms support */
-export function controlValueAccesorMixin<T extends Constructor<IsFormField>>(base: T): Constructor<ControlValueAccessor> & T {
+export function controlValueAccesorMixin<T extends Constructor<IsFormField>>(base: T): Constructor<HasControlValueAccessor> & T {
   return class extends base {
 
     onChange = (_: any) => { };
 
-    onTouch = () => { };
+    onTouched = () => { };
 
     writeValue(value: any): void {
       this.value = value || '';
@@ -22,11 +27,17 @@ export function controlValueAccesorMixin<T extends Constructor<IsFormField>>(bas
     }
 
     registerOnTouched(fn: any): void {
-      this.onTouch = fn;
+      this.onTouched = fn;
     }
 
     setDisabledState(isDisabled: boolean): void {
       this.isDisabled = isDisabled;
+    }
+
+    onInput(value: any) {
+      this.value = value;
+      this.onTouched();
+      this.onChange(this.value);
     }
   };
 

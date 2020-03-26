@@ -3,12 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { FormFieldMixinBase } from '../form-field.base';
 import { FormFieldBaseModule } from '../form-field-base.module';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { fieldsProviders } from '../../utils/field-providers';
 
 @Component({
   host: {
     '(input)': 'onInput($event.target.value)'
   },
+  providers: [
+    ...fieldsProviders(TextComponent)
+  ],
+  // inputs: ['label'],
   selector: 'input[type="text"]',
   template: ``
 })
@@ -22,9 +27,6 @@ export class TextComponent extends FormFieldMixinBase {
 })
 export class FormFieldBaseTestComponent {
 
-  @ViewChild(TextComponent)
-  textComponent: TextComponent;
-
   label = 'label';
 
   form = new FormGroup({
@@ -34,7 +36,11 @@ export class FormFieldBaseTestComponent {
 
 
 @NgModule({
-  imports: [FormFieldBaseModule],
+  imports: [
+    FormFieldBaseModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   exports: [TextComponent, FormFieldBaseTestComponent],
   declarations: [TextComponent, FormFieldBaseTestComponent],
   providers: [],

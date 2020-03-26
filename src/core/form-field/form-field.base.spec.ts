@@ -9,15 +9,16 @@ import {
   async,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { FormFieldBaseTestModule, FormFieldBaseTestComponent } from './testing/form-control-test.module';
+import { FormFieldBaseTestModule, FormFieldBaseTestComponent, TextComponent } from './testing/form-control-test.module';
 import { FormFieldBaseModule } from './form-field-base.module';
 import { DebugElement } from '@angular/core';
 
 
 
-fdescribe('AltButton', () => {
+describe('FormFieldBase', () => {
   let fixture: ComponentFixture<FormFieldBaseTestComponent>;
   let debugElement: DebugElement;
+  let textDebugElement: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -29,21 +30,33 @@ fdescribe('AltButton', () => {
     TestBed.compileComponents();
     fixture = TestBed.createComponent(FormFieldBaseTestComponent);
     debugElement = fixture.debugElement;
+    textDebugElement = fixture.debugElement.query(By.directive(TextComponent));
     fixture.detectChanges();
   }));
 
   it('should implement all the  properties of FormFieldBase', () => {
-    expect(fixture.componentInstance.textComponent.changeDetectorRef).toBeDefined();
-    expect(fixture.componentInstance.textComponent.value).toBeDefined();
-    expect(fixture.componentInstance.textComponent.label).toBeDefined();
-    expect(fixture.componentInstance.textComponent.isDisabled).toBeDefined();
+    expect(textDebugElement.componentInstance.changeDetectorRef).toBeDefined();
+    expect(textDebugElement.componentInstance.value).toBeDefined();
+    expect(textDebugElement.componentInstance.label).toBeDefined();
+    expect(textDebugElement.componentInstance.isDisabled).toBeDefined();
   });
 
-  it('should call ControlValueAccesor methods', () => {
-    const writeValueSpy = spyOn(fixture.componentInstance.textComponent, 'writeValue').and.callThrough();
-    fixture.detectChanges();
+  fit('should detect value changes', () => {
+    const writeValueSpy = spyOn(textDebugElement.componentInstance, 'writeValue').and.callThrough();
+    const onInputSpy = spyOn(textDebugElement.componentInstance, 'onInput').and.callThrough();
+    const changedValue = 'Value has changed';
+    const input = debugElement.query(By.css('input'));
 
+    fixture.componentInstance.form.get('text').setValue(changedValue);
+    fixture.detectChanges();
     expect(writeValueSpy).toHaveBeenCalled();
+    expect(textDebugElement.componentInstance.value).toEqual(changedValue);
+
+    input.nativeElement.value = changedValue + ' again';
+    input.nativeElement.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    expect(onInputSpy).toHaveBeenCalled();
+    expect(textDebugElement.componentInstance.value).toEqual(changedValue + ' again');
   });
 
 });
