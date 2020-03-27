@@ -41,7 +41,7 @@ describe('FormFieldBase', () => {
     expect(textDebugElement.componentInstance.isDisabled).toBeDefined();
   });
 
-  fit('should detect value changes', () => {
+  it('should detect value changes', () => {
     const writeValueSpy = spyOn(textDebugElement.componentInstance, 'writeValue').and.callThrough();
     const onInputSpy = spyOn(textDebugElement.componentInstance, 'onInput').and.callThrough();
     const changedValue = 'Value has changed';
@@ -57,6 +57,20 @@ describe('FormFieldBase', () => {
     fixture.detectChanges();
     expect(onInputSpy).toHaveBeenCalled();
     expect(textDebugElement.componentInstance.value).toEqual(changedValue + ' again');
+    expect(fixture.componentInstance.form.get('text').value).toEqual(changedValue + ' again');
+  });
+
+  it('should emit formcontrol valueChanges event', () => {
+    const formValueChangeSpy  = jasmine.createSpy('formValueChange spy');
+    const changedValue = 'Value has changed';
+    const input = debugElement.query(By.css('input'));
+    fixture.componentInstance.form.get('text').valueChanges.subscribe(formValueChangeSpy);
+    input.nativeElement.value = changedValue;
+    input.nativeElement.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    expect(formValueChangeSpy).toHaveBeenCalled();
+    expect(formValueChangeSpy.calls.first().args[0]).toEqual(changedValue);
   });
 
 });

@@ -13,14 +13,12 @@ import { fieldsProviders } from '../../utils/field-providers';
   providers: [
     ...fieldsProviders(TextComponent)
   ],
-  // inputs: ['label'],
+  inputs: ['label'],
   selector: 'input[type="text"]',
   template: ``
 })
 
-export class TextComponent extends FormFieldMixinBase {
-
-}
+export class TextComponent extends FormFieldMixinBase { }
 
 @Component({
   template: `<input type="text" [label]="label" [formControl]="form.get('text')"/>`

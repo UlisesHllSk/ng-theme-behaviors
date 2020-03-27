@@ -9,13 +9,13 @@ import { IsFormField } from './is-form-field';
 @Component({ template: ''})
 export class FormControlBaseComponent implements IsFormField {
   /** Indicates the label of the component */
-  @Input() label: string;
+  label: string;
 
   /** Hint que se muestra debajo del campo del lado izquierdo */
-  @Input() hintStart: string;
+  hintStart: string;
 
   /** Hint que se muestra debajo del componente del lado derecho */
-  @Input() hintEnd: string;
+  hintEnd: string;
 
   /** Component's value */
   value = null;
