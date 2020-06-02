@@ -7,7 +7,21 @@
     {
       "type": "chrome",
       "request": "attach",
-      "name": "Karma Chrome",
+      "name": "Angular/Karma Test Explorer Debugger",
+      "port": 9222,
+      "webRoot": "${workspaceRoot}",
+      "pathMapping": {
+        "/": "${workspaceRoot}",
+        "/base/": "${workspaceRoot}/"
+      },
+      "sourceMapPathOverrides": {
+        "*": "${webRoot}/*"
+      },
+    },
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Karma Chrome Debugger",
       "address": "localhost",
       "webRoot": "${workspaceRoot}",
       "port": 9333,
