@@ -1,10 +1,10 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, ViewChild, AfterViewInit } from '@angular/core';
 import { canDisableMixin } from '../can-disabled.mixin';
 import { CanDisable } from '../can-disabled';
 
 @Component({
   host: {
-    '[attr.disabled]': 'isDisabled || null',
+    '[disabled]': 'isDisabled',
   },
   inputs: ['isDisabled'],
   selector: 'input',
@@ -13,10 +13,18 @@ import { CanDisable } from '../can-disabled';
 export class InputTestComponent extends canDisableMixin(CanDisable) { }
 
 @Component({
-  template: `<input [isDisabled]="isDisabled" />`
+  template: `<input [isDisabled]="disabled" />`
 })
-export class CanDisabledTestComponent {
-  isDisabled = false;
+export class CanDisabledTestComponent implements AfterViewInit {
+
+  @ViewChild(InputTestComponent)
+  input: InputTestComponent;
+
+  disabled = false;
+
+  ngAfterViewInit() {
+
+  }
 }
 
 @NgModule({

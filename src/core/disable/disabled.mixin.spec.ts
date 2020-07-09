@@ -3,11 +3,13 @@ import { DebugElement } from '@angular/core';
 import { TextComponent } from '../form-field/testing/form-control-test.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { InputTestComponent, CanDisabledTestModule } from './testing/can-disabled-test.module';
+import { InputTestComponent, CanDisabledTestModule, CanDisabledTestComponent } from './testing/can-disabled-test.module';
+import { By } from '@angular/platform-browser';
 
 describe('CanDisabledMixin', () => {
   const testbend = getTestBed();
-  let fixture: ComponentFixture<InputTestComponent>;
+  let fixtureInput: ComponentFixture<InputTestComponent>;
+  let fixtureCanDisabled: ComponentFixture<CanDisabledTestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,21 +21,30 @@ describe('CanDisabledMixin', () => {
         entryComponents: []
       }
     });
-    fixture = TestBed.createComponent(InputTestComponent);
-    fixture.autoDetectChanges();
+    fixtureCanDisabled = TestBed.createComponent(CanDisabledTestComponent);
   }));
 
-  it('should have the isDisabled property', async(() => {
-    expect(fixture.componentInstance.isDisabled).toBeDefined();
-    expect(typeof fixture.componentInstance.isDisabled == 'boolean').toBeTruthy();
-  }));
 
   it('should have the disabled element property', () => {
-    expect(fixture.debugElement.nativeElement.disabled).toBeDefined();
-    expect(typeof fixture.debugElement.nativeElement.disabled == 'boolean').toBeTruthy();
+    const input = fixtureCanDisabled.debugElement.query(By.css('input'));
+    expect(input.nativeElement.disabled).toBeDefined();
+    expect(typeof input.nativeElement.disabled == 'boolean').toBeTruthy();
+  });
+
+  fit('should detect changes from isDisabled property', () => {
+    const input = fixtureCanDisabled.debugElement.query(By.css('input'));
+    expect(!input.nativeElement.disabled).toBeTruthy();
+
+    fixtureCanDisabled.debugElement.componentInstance.disabled = true;
+    fixtureCanDisabled.detectChanges();
+    expect(input.nativeElement.disabled).toBeTruthy();
+
+    fixtureCanDisabled.debugElement.componentInstance.disabled = false;
+    fixtureCanDisabled.detectChanges();
+    expect(!input.nativeElement.disabled).toBeTruthy();
   });
 
   afterEach(() => {
-    fixture.autoDetectChanges();
+    // fixtureInput.autoDetectChanges();
   });
 });
