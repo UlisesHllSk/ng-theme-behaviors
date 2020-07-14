@@ -31,7 +31,7 @@ describe('CanDisabledMixin', () => {
     expect(typeof input.nativeElement.disabled == 'boolean').toBeTruthy();
   });
 
-  fit('should detect changes from isDisabled property', () => {
+  it('should detect changes from isDisabled property', () => {
     const input = fixtureCanDisabled.debugElement.query(By.css('input'));
     expect(!input.nativeElement.disabled).toBeTruthy();
 
