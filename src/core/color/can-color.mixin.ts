@@ -1,13 +1,8 @@
-import { ElementRef } from '@angular/core';
 import { Constructor } from '../constructor';
 import { CanColor } from './can-color';
+import { IHasColor } from './has-color';
 
-interface HasElementRef {
-  elementRef: ElementRef;
-  prefixColor: string;
-}
-
-export function canColorMixin<T extends Constructor<HasElementRef>>(base: T): Constructor<CanColor> & T {
+export function canColorMixin<T extends Constructor<IHasColor>>(base: T): Constructor<CanColor> & T {
   return class extends base {
     private themeColor: string;
 
@@ -18,10 +13,10 @@ export function canColorMixin<T extends Constructor<HasElementRef>>(base: T): Co
 
       if (colorPalette != this.themeColor) {
         if (this.themeColor) {
-          this.elementRef.nativeElement.classList.remove(`${this.prefixColor}${this.themeColor}`);
+          this.elementRef.nativeElement.classList.remove(`${this.prefixTheme}${this.themeColor}`);
         }
         if (colorPalette) {
-          this.elementRef.nativeElement.classList.add(`${this.prefixColor}${colorPalette}`);
+          this.elementRef.nativeElement.classList.add(`${this.prefixTheme}${colorPalette}`);
         }
 
         this.themeColor = colorPalette;
@@ -29,7 +24,7 @@ export function canColorMixin<T extends Constructor<HasElementRef>>(base: T): Co
     }
 
     constructor(...args: any[]) {
-      super(args);
+      super(...args);
     }
   };
 }
