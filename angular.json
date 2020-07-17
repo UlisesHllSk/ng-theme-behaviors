@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-indexed-db": {
+    "ng-theme-behaviors": {
       "projectType": "library",
       "root": "",
       "sourceRoot": "src",
@@ -44,5 +44,5 @@
         }
       }
     }},
-  "defaultProject": "ng-indexed-db"
+  "defaultProject": "ng-theme-behaviors"
 }
