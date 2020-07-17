@@ -1,33 +1,32 @@
-import { Input, Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, Injector } from '@angular/core';
 
 import { controlValueAccesorMixin } from './control-value-accesor.mixin';
 import { IsFormFieldInterface } from './is-form-field';
 import { canDisableMixin } from '../disable/can-disable.mixin';
-import { CanDisable } from '../disable/can-disable';
 
 /**
  * Base class for form fields components
  */
 @Component({ template: ''})
-export class FormControlBaseComponent extends canDisableMixin(CanDisable) implements IsFormFieldInterface {
+export class FormControlBaseComponent implements IsFormFieldInterface {
   /** Indicates the label of the component */
   label: string;
-
-  /** Hint que se muestra debajo del campo del lado izquierdo */
-  hintStart: string;
-
-  /** Hint que se muestra debajo del componente del lado derecho */
-  hintEnd: string;
 
   /** Component's value */
   value = null;
 
+  /** Disabled component's flag */
+  isDisabled: boolean;
+
+  /** Change detector */
+  changeDetectorRef: ChangeDetectorRef;
+
   constructor(
-    public changeDetectorRef: ChangeDetectorRef
+    public injector: Injector
   ) {
-    super();
+    this.changeDetectorRef = injector.get(ChangeDetectorRef);
   }
 
 }
 
-export const FormFieldMixinBase = controlValueAccesorMixin(FormControlBaseComponent);
+export const FormFieldMixinBase = controlValueAccesorMixin(canDisableMixin(FormControlBaseComponent));
