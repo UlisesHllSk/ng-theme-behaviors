@@ -2,12 +2,12 @@ import { Injector, ElementRef, InjectionToken } from '@angular/core';
 
 export const PREFIX_THEME = new InjectionToken<string>('PREFIX_THEME');
 
-export interface IHasColor {
+export interface HasColorInterface {
   elementRef: ElementRef;
   prefixTheme: string;
 }
 
-export class HasColor implements IHasColor {
+export class HasColor implements HasColorInterface {
 
   elementRef: ElementRef;
 

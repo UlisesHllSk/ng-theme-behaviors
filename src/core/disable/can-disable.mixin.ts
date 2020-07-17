@@ -1,12 +1,11 @@
 import { Constructor } from '../constructor';
-import { ICanDisable } from './can-disable';
+import { CanDisableInterface } from './can-disable';
 
-export function canDisableMixin<T extends Constructor<{}>>(base: T): Constructor<ICanDisable> & T {
+export function canDisableMixin<T extends Constructor<{}>>(base: T): Constructor<CanDisableInterface> & T {
 
-  class Temporary extends base {
+  return class extends base {
 
     isDisabled = false;
 
-  }
-  return Temporary;
+  };
 }

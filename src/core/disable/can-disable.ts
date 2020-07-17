@@ -1,7 +1,7 @@
-export interface ICanDisable {
+export interface CanDisableInterface {
   isDisabled: boolean;
 }
 
-export class CanDisable implements ICanDisable {
+export class CanDisable implements CanDisableInterface {
   isDisabled: boolean;
 }

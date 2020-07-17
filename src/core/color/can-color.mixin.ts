@@ -1,8 +1,8 @@
 import { Constructor } from '../constructor';
 import { CanColor } from './can-color';
-import { IHasColor } from './has-color';
+import { HasColorInterface } from './has-color';
 
-export function canColorMixin<T extends Constructor<IHasColor>>(base: T): Constructor<CanColor> & T {
+export function canColorMixin<T extends Constructor<HasColorInterface>>(base: T): Constructor<CanColor> & T {
   return class extends base {
     private themeColor: string;
 
