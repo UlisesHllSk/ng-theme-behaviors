@@ -1,11 +1,6 @@
 import {
   ComponentFixture,
-  fakeAsync,
-  flushMicrotasks,
-  inject,
   TestBed,
-  tick,
-  flush,
   async,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -71,6 +66,23 @@ describe('FormField', () => {
 
     expect(formValueChangeSpy).toHaveBeenCalled();
     expect(formValueChangeSpy.calls.first().args[0]).toEqual(changedValue);
+  });
+
+  it('should detect disable changes', () => {
+    const disabledStateSpy = spyOn(textDebugElement.componentInstance, 'setDisabledState').and.callThrough();
+    const input = debugElement.query(By.css('input'));
+
+    fixture.componentInstance.form.get('text').disable();
+    fixture.detectChanges();
+    expect(disabledStateSpy).toHaveBeenCalled();
+    expect(textDebugElement.nativeElement.disabled).toBeTruthy();
+    expect(textDebugElement.componentInstance.isDisabled).toBeTruthy();
+
+    fixture.componentInstance.form.get('text').enable();
+    fixture.detectChanges();
+    expect(disabledStateSpy).toHaveBeenCalled();
+    expect(textDebugElement.nativeElement.disabled).toBeFalsy();
+    expect(textDebugElement.componentInstance.isDisabled).toBeFalsy();
   });
 
 });

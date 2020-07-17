@@ -8,6 +8,7 @@ import { fieldsProviders } from '../../utils/field-providers';
 
 @Component({
   host: {
+    '[disabled]': 'isDisabled',
     '(input)': 'onInput($event.target.value)'
   },
   providers: [
