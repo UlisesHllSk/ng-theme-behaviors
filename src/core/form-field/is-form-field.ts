@@ -1,8 +1,8 @@
 import { ChangeDetectorRef } from '@angular/core';
+import { ICanDisable } from '../disable/can-disable';
 
-export interface IsFormField {
+export interface IsFormFieldInterface extends ICanDisable {
   changeDetectorRef: ChangeDetectorRef;
-  isDisabled: boolean;
   label: string;
   value: any;
 }

@@ -1,7 +1,7 @@
 import { ControlValueAccessor } from '@angular/forms';
 
 import { Constructor } from '../constructor';
-import { IsFormField } from './is-form-field';
+import { IsFormFieldInterface } from './is-form-field';
 
 export interface HasControlValueAccessor extends ControlValueAccessor {
   onChange: (_: any) => any;
@@ -10,7 +10,7 @@ export interface HasControlValueAccessor extends ControlValueAccessor {
 }
 
 /** Mixin to augment a component with Dynamic Forms support */
-export function controlValueAccesorMixin<T extends Constructor<IsFormField>>(base: T): Constructor<HasControlValueAccessor> & T {
+export function controlValueAccesorMixin<T extends Constructor<IsFormFieldInterface>>(base: T): Constructor<HasControlValueAccessor> & T {
   return class extends base {
 
     onChange = (_: any) => { };

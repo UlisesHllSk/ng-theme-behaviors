@@ -1,13 +1,15 @@
 import { Input, Component, ChangeDetectorRef } from '@angular/core';
 
 import { controlValueAccesorMixin } from './control-value-accesor.mixin';
-import { IsFormField } from './is-form-field';
+import { IsFormFieldInterface } from './is-form-field';
+import { canDisableMixin } from '../disable/can-disable.mixin';
+import { CanDisable } from '../disable/can-disable';
 
 /**
  * Base class for form fields components
  */
 @Component({ template: ''})
-export class FormControlBaseComponent implements IsFormField {
+export class FormControlBaseComponent extends canDisableMixin(CanDisable) implements IsFormFieldInterface {
   /** Indicates the label of the component */
   label: string;
 
@@ -20,13 +22,10 @@ export class FormControlBaseComponent implements IsFormField {
   /** Component's value */
   value = null;
 
-  /** Indicates if the state of the component is _disabled_ */
-  isDisabled = false;
-
   constructor(
     public changeDetectorRef: ChangeDetectorRef
   ) {
-
+    super();
   }
 
 }
