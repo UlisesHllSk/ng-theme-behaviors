@@ -1,6 +1,6 @@
 import { Component, NgModule, ViewChild, AfterViewInit } from '@angular/core';
-import { canDisableMixin } from '../can-disabled.mixin';
-import { CanDisable } from '../can-disabled';
+import { canDisableMixin } from '../can-disable.mixin';
+import { CanDisable } from '../can-disable';
 
 @Component({
   host: {

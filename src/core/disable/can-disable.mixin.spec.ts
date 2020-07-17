@@ -3,7 +3,7 @@ import { DebugElement } from '@angular/core';
 import { TextComponent } from '../form-field/testing/form-control-test.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { InputTestComponent, CanDisabledTestModule, CanDisabledTestComponent } from './testing/can-disabled-test.module';
+import { InputTestComponent, CanDisabledTestModule, CanDisabledTestComponent } from './testing/can-disable-test.module';
 import { By } from '@angular/platform-browser';
 
 describe('CanDisabledMixin', () => {

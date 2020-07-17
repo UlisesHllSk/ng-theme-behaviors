@@ -15,7 +15,7 @@ import { DebugElement } from '@angular/core';
 
 
 
-describe('FormFieldBase', () => {
+describe('FormField', () => {
   let fixture: ComponentFixture<FormFieldBaseTestComponent>;
   let debugElement: DebugElement;
   let textDebugElement: DebugElement;

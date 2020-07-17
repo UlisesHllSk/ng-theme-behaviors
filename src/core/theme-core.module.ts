@@ -1,25 +1,14 @@
 import { NgModule } from '@angular/core';
 
-import { FieldBaseComponent } from './base/field-component.base';
-import { FormControlBaseComponent } from './form-field/form-field.base';
-import { InputBaseComponent } from './base/input-component.base';
-import { FormContainerBaseComponent } from './base/container-component.base';
+import { DigitsOnlyModule } from './directives/digits-only/digits-only.module';
+import { FormFieldBaseModule } from './form-field/form-field-base.module';
+
 
 
 @NgModule({
-  imports: [],
-  exports: [
-    FieldBaseComponent,
-    FormControlBaseComponent,
-    InputBaseComponent,
-    FormContainerBaseComponent,
-  ],
-  declarations: [
-    FieldBaseComponent,
-    FormControlBaseComponent,
-    InputBaseComponent,
-    FormContainerBaseComponent,
-  ],
-  providers: [],
+  imports: [
+    DigitsOnlyModule,
+    FormFieldBaseModule,
+  ]
 })
 export class ThemeCoreModule { }
