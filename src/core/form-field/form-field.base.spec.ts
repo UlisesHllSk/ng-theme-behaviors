@@ -5,7 +5,6 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FormFieldBaseTestModule, FormFieldBaseTestComponent, TextComponent } from './testing/form-control-test.module';
-import { FormFieldBaseModule } from './form-field-base.module';
 import { DebugElement } from '@angular/core';
 
 
@@ -18,7 +17,6 @@ describe('FormField', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        FormFieldBaseModule,
         FormFieldBaseTestModule,
       ]
     });

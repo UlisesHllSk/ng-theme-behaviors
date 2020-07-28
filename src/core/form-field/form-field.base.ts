@@ -7,7 +7,6 @@ import { canDisableMixin } from '../disable/can-disable.mixin';
 /**
  * Base class for form fields components
  */
-@Component({ template: ''})
 export class FormControlBaseComponent implements IsFormFieldInterface {
   /** Indicates the label of the component */
   label: string;

@@ -1,8 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Injector } from '@angular/core';
 import { NgModule } from '@angular/core';
 
 import { FormFieldMixinBase } from '../form-field.base';
-import { FormFieldBaseModule } from '../form-field-base.module';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { fieldsProviders } from '../../utils/field-providers';
 
@@ -19,7 +18,11 @@ import { fieldsProviders } from '../../utils/field-providers';
   template: ``
 })
 
-export class TextComponent extends FormFieldMixinBase { }
+export class TextComponent extends FormFieldMixinBase {
+  constructor(public injector: Injector) {
+    super(injector);
+  }
+}
 
 @Component({
   template: `<input type="text" [label]="label" [formControl]="form.get('text')"/>`
@@ -36,7 +39,6 @@ export class FormFieldBaseTestComponent {
 
 @NgModule({
   imports: [
-    FormFieldBaseModule,
     FormsModule,
     ReactiveFormsModule,
   ],
