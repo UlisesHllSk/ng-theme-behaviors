@@ -1,5 +1,7 @@
 // export * from './core';
 
+export * from './core/button/button.base';
+export * from './core/button/is-button';
 export * from './core/color/can-color';
 export * from './core/color/can-color.mixin';
 export * from './core/form-field/form-field.base';
