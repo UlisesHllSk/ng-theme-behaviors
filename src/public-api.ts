@@ -10,7 +10,7 @@ export * from './core/directives/digits-only/digits-only.directive';
 export * from './core/disable/can-disable';
 export * from './core/disable/can-disable.mixin';
 
-// export * from './core/types/options.type';
+export * from './core/types/options.type';
 
 // export * from './core/utils/apply-mixins';
 // export * from './core/utils/track-by';
